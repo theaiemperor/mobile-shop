@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Mobiles - Quick Links</title>
+    <link rel="icon" type="image/png" href="./logo.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            /* vertical center */
+            justify-content: center;
+            /* horizontal center */
+            padding: 15px;
+            overflow-x: hidden;
+        }
+
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 35px;
+            padding: 15px;
+        }
+
+        .header h1 {
+            color: #e8e8e8;
+            font-size: 2em;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #b8b8b8;
+            font-size: 1em;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            color: #d4d4d4;
+            font-size: 1.5em;
+            margin-bottom: 18px;
+            text-align: center;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            padding: 0 10px;
+        }
+
+        /* .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            padding: 0 5px;
+        } */
+        .grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            /* center boxes horizontally */
+            align-items: center;
+            gap: 15px;
+            padding: 0 5px;
+        }
+
+
+        .glass-box {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 22px 18px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            width: 200px;
+        }
+
+        .glass-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .glass-box:hover::before {
+            left: 100%;
+        }
+
+        .glass-box:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .glass-box:active {
+            transform: translateY(-4px) scale(0.98);
+        }
+
+        .icon {
+            font-size: 2.5em;
+            margin-bottom: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .glass-box:hover .icon {
+            transform: scale(1.15);
+        }
+
+        .box-title {
+            color: #e8e8e8;
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .box-caption {
+            color: #b8b8b8;
+            font-size: 0.88em;
+            line-height: 1.4;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .color-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 12px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .glass-box:hover .color-icon {
+            transform: translateY(-5px) rotate(5deg);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+        }
+
+        .color-icon span {
+            font-size: 1.8em;
+            filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.3));
+        }
+
+        .instagram {
+            background: linear-gradient(135deg, #c0c0c0 0%, #a8a8a8 100%);
+        }
+
+        .youtube {
+            background: linear-gradient(135deg, #b8b8b8 0%, #909090 100%);
+        }
+
+        .facebook {
+            background: linear-gradient(135deg, #d0d0d0 0%, #b0b0b0 100%);
+        }
+
+        .telegram {
+            background: linear-gradient(135deg, #c8c8c8 0%, #a0a0a0 100%);
+        }
+
+        .whatsapp {
+            background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%);
+        }
+
+        .email {
+            background: linear-gradient(135deg, #c0c0c0 0%, #989898 100%);
+        }
+
+        .call {
+            background: linear-gradient(135deg, #2d9651 0%, #1f6b38 100%);
+        }
+
+        .map {
+            background: linear-gradient(135deg, #b8b8b8 0%, #888888 100%);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 12px;
+            }
+
+            .header h1 {
+                font-size: 1.6em;
+            }
+
+            .header p {
+                font-size: 0.95em;
+            }
+
+            .section-title {
+                font-size: 1.3em;
+                margin-bottom: 15px;
+            }
+
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .glass-box {
+                padding: 18px 12px;
+            }
+
+            .color-icon {
+                width: 50px;
+                height: 50px;
+            }
+
+            .color-icon span {
+                font-size: 1.5em;
+            }
+
+            .icon {
+                font-size: 2em;
+            }
+
+            .box-title {
+                font-size: 1.05em;
+            }
+
+            .box-caption {
+                font-size: 0.82em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.4em;
+            }
+
+            .glass-box {
+                padding: 16px 10px;
+            }
+
+            .box-caption br {
+                display: none;
+            }
+
+            .box-caption {
+                font-size: 0.78em;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .shop-grid {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 600px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="logo.png" alt="logo" width="100" height="100">
+            <h1> Welcome Mobiles</h1>
+            <p>Your Trusted Mobile Shop</p>
+        </div>
+
+        <!-- Social Media Section -->
+        <div class="section">
+            <h2 class="section-title">🌐 Connect With Us</h2>
+            <div class="grid">
+                <a href="https://instagram.com/welcomemobiles" target="_blank" rel="noopener">
+                    <div class="glass-box">
+                        <div class="color-icon instagram">
+                            <span>📷</span>
+                        </div>
+                        <div class="box-title">Instagram</div>
+                        <div class="box-caption">Latest updates & offers</div>
+                    </div>
+                </a>
+
+                <a href="https://youtube.com/@welcomemobiles" target="_blank" rel="noopener">
+                    <div class="glass-box">
+                        <div class="color-icon youtube">
+                            <span>▶️</span>
+                        </div>
+                        <div class="box-title">YouTube</div>
+                        <div class="box-caption">Product reviews</div>
+                    </div>
+                </a>
+
+                <a href="https://facebook.com/welcomemobiles" target="_blank" rel="noopener">
+                    <div class="glass-box">
+                        <div class="color-icon facebook">
+                            <span>👍</span>
+                        </div>
+                        <div class="box-title">Facebook</div>
+                        <div class="box-caption">Join our community</div>
+                    </div>
+                </a>
+
+                <a href="https://t.me/welcomemobiles" target="_blank" rel="noopener">
+                    <div class="glass-box">
+                        <div class="color-icon telegram">
+                            <span>✈️</span>
+                        </div>
+                        <div class="box-title">Telegram</div>
+                        <div class="box-caption">Instant deal alerts</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="section">
+            <h2 class="section-title">📞 Get In Touch</h2>
+            <div class="grid">
+                <a href="tel:+917734865267">
+                    <div class="glass-box">
+                        <div class="color-icon call">
+                            <span>📞</span>
+                        </div>
+                        <div class="box-title">Call Us</div>
+                        <div class="box-caption">+91 7734865267</div>
+                    </div>
+                </a>
+
+                <a href="https://wa.me/917734865267?text=Hi%2C%20I%27m%20interested%20in%20your%20mobiles"
+                    target="_blank">
+                    <div class="glass-box">
+                        <div class="color-icon whatsapp">
+                            <span>💬</span>
+                        </div>
+                        <div class="box-title">WhatsApp</div>
+                        <div class="box-caption">Chat for quick support</div>
+                    </div>
+                </a>
+
+                <a href="mailto:theaiemperor@gmail.com?subject=Product%20Inquiry">
+                    <div class="glass-box">
+                        <div class="color-icon email">
+                            <span>✉️</span>
+                        </div>
+                        <div class="box-title">Email Us</div>
+                        <div class="box-caption">theaiemperor@gmail.com</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Shopping Section -->
+        <div class="section">
+            <h2 class="section-title">🛒 Visit Our Shop</h2>
+            <div class="grid shop-grid">
+                <a href="https://www.google.com/maps/place/Goner+Mod+Flyover,+Sitapura,+Jaipur,+Rajasthan+302022/@26.7651709,75.8365785,17z/data=!3m1!4b1!4m6!3m5!1s0x396dc916e3ca006d:0x390656e24f8fca42!8m2!3d26.7651709!4d75.8391534!16s%2Fg%2F1hhwfkgkt?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D"
+                    target="_blank" rel="noopener">
+                    <div class="glass-box">
+                        <div class="color-icon map">
+                            <span>🗺️</span>
+                        </div>
+                        <div class="box-title">Navigate</div>
+                        <div class="box-caption">Get directions to store</div>
+                    </div>
+                </a>
+
+                <a href="https://www.google.com/maps/place/Goner+Mod+Flyover,+Sitapura,+Jaipur,+Rajasthan+302022/@26.7651709,75.8365785,17z/data=!3m1!4b1!4m6!3m5!1s0x396dc916e3ca006d:0x390656e24f8fca42!8m2!3d26.7651709!4d75.8391534!16s%2Fg%2F1hhwfkgkt?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D"
+                    target="_blank" rel="noopener">
+                    <div class="glass-box">
+                        <div class="color-icon map">
+                            <span>📍</span>
+                        </div>
+                        <div class="box-title">View on Maps</div>
+                        <div class="box-caption">Location & reviews</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add ripple effect on click
+        document.querySelectorAll('.glass-box').forEach(box => {
+            box.addEventListener('click', function (e) {
+                const rect = this.getBoundingClientRect();
+                const ripple = document.createElement('div');
+                ripple.style.position = 'absolute';
+                ripple.style.borderRadius = '50%';
+                ripple.style.background = 'rgba(255,255,255,0.4)';
+                ripple.style.width = '80px';
+                ripple.style.height = '80px';
+                ripple.style.left = (e.clientX - rect.left - 40) + 'px';
+                ripple.style.top = (e.clientY - rect.top - 40) + 'px';
+                ripple.style.pointerEvents = 'none';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.opacity = '1';
+                ripple.style.transition = 'transform 0.5s ease-out, opacity 0.5s ease-out';
+
+                this.appendChild(ripple);
+
+                setTimeout(() => {
+                    ripple.style.transform = 'scale(4)';
+                    ripple.style.opacity = '0';
+                }, 10);
+
+                setTimeout(() => ripple.remove(), 500);
+            });
+        });
+    </script>
+</body>
+
+</html>
